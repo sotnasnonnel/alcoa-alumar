@@ -1,55 +1,88 @@
 import streamlit as st
-from streamlit_lottie import st_lottie
-import json
+import streamlit.components.v1 as components
+from streamlit_option_menu import option_menu
 
-# Função para carregar animação Lottie a partir de um arquivo local
-def load_lottiefile(filepath: str):
-    with open(filepath, "r") as f:
-        return json.load(f)
+# Configurar a página para o layout 'wide'
+st.set_page_config(layout="wide", page_title="Dashboard", page_icon=":bar_chart:")
 
-# Carregar animação Lottie a partir de um arquivo local (substitua o caminho pelo arquivo que você baixou)
-lottie_animation = load_lottiefile("path_to_your_downloaded_animation.json")
+# Estilizar a barra lateral e o conteúdo principal para responsividade
+st.markdown(
+    """
+    <style>
+    .css-1lcbmhc.e1fqkh3o3 {
+        background-color: #3e5265;
+        color: #f2f2f2;
+    }
+    .css-1lcbmhc.e1fqkh3o3:hover {
+        background-color: #3e5265;
+        color: #bdcdd8;
+    }
+    .css-12oz5g7 {
+        padding-top: 2rem;
+    }
+    .stSidebar {
+        background-color: #2e3b4e;
+        width: 250px; 
+    }
+    .sidebar .sidebar-content {
+        padding: 1rem 2rem;
+    }
+    .report-container {
+        width: 100%;
+        height: 100%;
+    }
+    @media (max-width: 768px) {
+        .report-container iframe {
+            width: 100% !important;
+            height: 600px !important;
+        }
+    }
+    @media (min-width: 769px) {
+        .report-container iframe {
+            width: 1200px !important;
+            height: 750px !important;
+        }
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
-# Exibir a animação Lottie
-st_lottie(lottie_animation, height=300, key="clothing_change")
+# Lista de relatórios com título e URL
+reports = {
+    "LPS": "https://app.powerbi.com/view?r=eyJrIjoiNWFkOGZlZjUtYmExNS00NjMwLWJlZmQtZTIzMmQwYjVkYWM4IiwidCI6IjZkNDg1YWY3LTAxZjYtNGE2MC05OWEwLTQzOTQyNzJiMjUzNSJ9",
+    "Planejamento": "https://app.powerbi.com/view?r=eyJrIjoiN2EzNGQ5OWYtNWJiOS00YWUxLTkwZTYtMTQxN2IzYTZhYTU2IiwidCI6IjZkNDg1YWY3LTAxZjYtNGE2MC05OWEwLTQzOTQyNzJiMjUzNSJ9",
+    "Strava": "https://app.powerbi.com/view?r=eyJrIjoiZDdmMjc2ZjktZDI0Ni00NjQ1LWExYmItMTYzODdmMWZkYzgwIiwidCI6IjZkNDg1YWY3LTAxZjYtNGE2MC05OWEwLTQzOTQyNzJiMjUzNSJ9",
+    "Comercial" : "https://app.powerbi.com/view?r=eyJrIjoiMmE5OWQxYWItMmRjMC00ZjM2LTkzM2MtZDgyMTc2ZDM5ODg2IiwidCI6IjZkNDg1YWY3LTAxZjYtNGE2MC05OWEwLTQzOTQyNzJiMjUzNSJ9"  
+}
 
-# Listas de atitudes
-old_attitudes = ["Selecione uma atitude","Orgulho", "Ira", "Egoísmo", "Impaciência", "Mentira"]
-new_attitudes = ["Selecione uma atitude","Compaixão", "Bondade", "Humildade", "Paciência", "Perdão", "Amor"]
+# Função para exibir cada relatório
+def show_report(url):
+    st.markdown(f"""
+        <div class="report-container">
+            <iframe src="{url}" width="100%" height="750" frameborder="0" allowfullscreen></iframe>
+        </div>
+        """, unsafe_allow_html=True)
 
-# Inicializando a lista de escolhas
-if 'old_choice' not in st.session_state:
-    st.session_state.old_choice = []
-if 'new_choice' not in st.session_state:
-    st.session_state.new_choice = []
-if 'reflections' not in st.session_state:
-    st.session_state.reflections = []
-
-# Título e Introdução
-st.title("Troca de Roupas Espirituais")
-st.write("""
-Nesta atividade, você irá refletir sobre suas atitudes e fazer uma troca espiritual, 
-despindo-se das práticas antigas e revestindo-se de novas atitudes em Cristo.
-""")
-
-# Escolha de atitudes velhas
-st.subheader("Escolha uma atitude antiga para se despir:")
-old_choice = st.selectbox("Atitudes Velhas", old_attitudes)
-if st.button("Adicionar atitude antiga"):
-    st.session_state.old_choice.append(old_choice)
-    st.success(f'Você adicionou "{old_choice}" às roupas velhas.')
-
-# Escolha de atitudes novas
-st.subheader("Escolha uma atitude nova para se revestir:")
-new_choice = st.selectbox("Atitudes Novas", new_attitudes)
-if st.button("Adicionar atitude nova"):
-    st.session_state.new_choice.append(new_choice)
-    st.success(f'Você se revestiu com "{new_choice}".')
-
-# Exibir escolhas
-st.subheader("Suas escolhas:")
-st.write("Atitudes Velhas:", ", ".join(st.session_state.old_choice))
-st.write("Atitudes Novas:", ", ".join(st.session_state.new_choice))
-
-# Reflexão
-st.subheader("Compartilhe como pode vestir essa nova atitude no dia a dia")
+# Barra lateral
+with st.sidebar:
+    st.title("Dashboard de Navegação")
+    selected = option_menu(
+        menu_title=None,  # Título do menu
+        options=list(reports.keys()),  # Opções
+        icons=["bar-chart-fill"] * len(reports),  # Ícones
+        menu_icon="cast",  # Ícone do menu
+        default_index=0,  # Índice selecionado por padrão
+    )
+    
+    st.markdown(
+        """
+        <div style="padding: 20px 10px; color: #f2f2f2;">
+            <p>Selecione um relatório para visualização detalhada.</p>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+    
+# Exibe o relatório selecionado
+show_report(reports[selected])
