@@ -50,10 +50,9 @@ st.markdown(
 
 # Lista de relatórios com título e URL
 reports = {
-    "LPS": "https://app.powerbi.com/view?r=eyJrIjoiNWFkOGZlZjUtYmExNS00NjMwLWJlZmQtZTIzMmQwYjVkYWM4IiwidCI6IjZkNDg1YWY3LTAxZjYtNGE2MC05OWEwLTQzOTQyNzJiMjUzNSJ9",
-    "Planejamento": "https://app.powerbi.com/view?r=eyJrIjoiN2EzNGQ5OWYtNWJiOS00YWUxLTkwZTYtMTQxN2IzYTZhYTU2IiwidCI6IjZkNDg1YWY3LTAxZjYtNGE2MC05OWEwLTQzOTQyNzJiMjUzNSJ9",
-    "Strava": "https://app.powerbi.com/view?r=eyJrIjoiZDdmMjc2ZjktZDI0Ni00NjQ1LWExYmItMTYzODdmMWZkYzgwIiwidCI6IjZkNDg1YWY3LTAxZjYtNGE2MC05OWEwLTQzOTQyNzJiMjUzNSJ9",
-    "Comercial" : "https://app.powerbi.com/view?r=eyJrIjoiMmE5OWQxYWItMmRjMC00ZjM2LTkzM2MtZDgyMTc2ZDM5ODg2IiwidCI6IjZkNDg1YWY3LTAxZjYtNGE2MC05OWEwLTQzOTQyNzJiMjUzNSJ9"  
+    "CCG Construções":"https://app.powerbi.com/view?r=eyJrIjoiNWFjNjc4NjMtMDEzNi00YWQ0LThkMTEtNzQ2ZmE4OTNhNTg5IiwidCI6IjZkNDg1YWY3LTAxZjYtNGE2MC05OWEwLTQzOTQyNzJiMjUzNSJ9",
+    "EDECONSIL, M&F e RECORD": "https://app.powerbi.com/view?r=eyJrIjoiNzZhYWY1NWYtYmNiNC00NmY2LTgzNGMtNTY1ODhhYmFmZDFkIiwidCI6IjZkNDg1YWY3LTAxZjYtNGE2MC05OWEwLTQzOTQyNzJiMjUzNSJ9",
+    "TKF - ALUMAR": "https://app.powerbi.com/view?r=eyJrIjoiMzE3NWJlM2MtZGYzMi00MzQxLTg5MzAtYjQxOTQyNGI4NWY4IiwidCI6IjZkNDg1YWY3LTAxZjYtNGE2MC05OWEwLTQzOTQyNzJiMjUzNSJ9",
 }
 
 # Função para exibir cada relatório
@@ -84,5 +83,7 @@ with st.sidebar:
         unsafe_allow_html=True
     )
     
+    st.image("caminho_para_logo.png", use_column_width=True)
+
 # Exibe o relatório selecionado
 show_report(reports[selected])
