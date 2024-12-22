@@ -52,7 +52,7 @@ st.markdown(
 reports = {
     "vale verde":"https://app.powerbi.com/view?r=eyJrIjoiYWU1MTRiZWEtM2JjNy00NTA4LWExYWQtYmI1NzgzNDExZTU3IiwidCI6IjZkNDg1YWY3LTAxZjYtNGE2MC05OWEwLTQzOTQyNzJiMjUzNSJ9",
     "cimcop": "https://app.powerbi.com/view?r=eyJrIjoiZWE4N2NkZGQtNDdlNC00Yjg5LWIwM2YtNDdmZDJlNTljMGU0IiwidCI6IjZkNDg1YWY3LTAxZjYtNGE2MC05OWEwLTQzOTQyNzJiMjUzNSJ9",
-    ,
+    
 }
 
 # Função para exibir cada relatório
