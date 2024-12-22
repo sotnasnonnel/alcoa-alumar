@@ -83,7 +83,7 @@ with st.sidebar:
         unsafe_allow_html=True
     )
     
-    st.image("caminho_para_logo.png", use_column_width=True)
+    st.image("caminho_para_logo.png", use_container_width=True)
 
 # Exibe o relatório selecionado
 show_report(reports[selected])
