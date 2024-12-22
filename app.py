@@ -50,9 +50,9 @@ st.markdown(
 
 # Lista de relatórios com título e URL
 reports = {
-    "CCG Construções":"https://app.powerbi.com/view?r=eyJrIjoiNWFjNjc4NjMtMDEzNi00YWQ0LThkMTEtNzQ2ZmE4OTNhNTg5IiwidCI6IjZkNDg1YWY3LTAxZjYtNGE2MC05OWEwLTQzOTQyNzJiMjUzNSJ9",
-    "EDECONSIL, M&F e RECORD": "https://app.powerbi.com/view?r=eyJrIjoiNzZhYWY1NWYtYmNiNC00NmY2LTgzNGMtNTY1ODhhYmFmZDFkIiwidCI6IjZkNDg1YWY3LTAxZjYtNGE2MC05OWEwLTQzOTQyNzJiMjUzNSJ9",
-    "TKF - ALUMAR": "https://app.powerbi.com/view?r=eyJrIjoiMzE3NWJlM2MtZGYzMi00MzQxLTg5MzAtYjQxOTQyNGI4NWY4IiwidCI6IjZkNDg1YWY3LTAxZjYtNGE2MC05OWEwLTQzOTQyNzJiMjUzNSJ9",
+    "vale verde":"https://app.powerbi.com/view?r=eyJrIjoiYWU1MTRiZWEtM2JjNy00NTA4LWExYWQtYmI1NzgzNDExZTU3IiwidCI6IjZkNDg1YWY3LTAxZjYtNGE2MC05OWEwLTQzOTQyNzJiMjUzNSJ9",
+    "cimcop": "https://app.powerbi.com/view?r=eyJrIjoiZWE4N2NkZGQtNDdlNC00Yjg5LWIwM2YtNDdmZDJlNTljMGU0IiwidCI6IjZkNDg1YWY3LTAxZjYtNGE2MC05OWEwLTQzOTQyNzJiMjUzNSJ9",
+    ,
 }
 
 # Função para exibir cada relatório
@@ -83,7 +83,7 @@ with st.sidebar:
         unsafe_allow_html=True
     )
     
-    st.image("caminho_para_logo.png", use_container_width=True)
+    st.image("caminho_para.png", use_container_width=True)
 
 # Exibe o relatório selecionado
 show_report(reports[selected])
