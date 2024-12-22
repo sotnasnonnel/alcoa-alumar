@@ -21,7 +21,7 @@ st.markdown(
         padding-top: 2rem;
     }
     .stSidebar {
-        background-color: black;
+        background-color: white;
         width: 250px; 
     }
     .sidebar .sidebar-content {
